@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>
+	ConversionsRUs
+</title>
+<style type="text/css">
+body
+{
+background-image:url('background4.gif');
+background-repeat:no-repeat;
+background-attachment:fixed;
+background-position:center;
+}
+</style>
+
+<body>
+
+<center><b><FONT SIZE = +2>MPG and KPL Converter</FONT></b><center><BR>
+
+<form Name="converter">
+<input type="text" name="MPG" size="10" value="" onClick="this.value=''"> MPG =  
+<input type="text" ID="multiply" name="result" size="10" value=""> KPL
+<input type="button" value="Convert" onclick="convertMpg();"> 
+<BR>
+<BR>
+<input type="text" name="KPL" size="10" value="" onClick="this.value=''"> KPL =
+<input type="text" ID="multiply2" name="result" size="10" value=""> MPG
+<input type="button" value="Convert" onclick="convertKpl();">
+<BR>
+<input type="reset" value="Reset">
+<BR>
+ 
+Price Checker <select name="checker">
+<option value="">
+<option value="http://gasbuddy.com/">GasBuddy
+<option value="http://www.fuelmeup.com/">FuelMeUp
+<option value="http://gasprices.mapquest.com/">MapquestGasPrices
+</select>
+
+<input type="button" value="See Gas Prices in Your Area!" align="center" onClick="window.open(checker.value,'newtab')">
+
+</form>
+</body>
+
+<script language="JavaScript">
+function convertMpg()
+{
+	var MPG = document.converter.MPG.value;
+	var convertToKpl;
+	var toKpl = 0.425144;
+	
+	if(MPG == "")
+	{
+		alert("The input field was left blank. Please enter a value.")
+	}
+	else if(MPG <= 0)
+	{
+		alert("The value you entered is either less than or equal to zero. Please enter a value that is greater than zero.")
+	}
+	else
+	{
+		convertToKpl = (parseInt(MPG) * toKpl).toFixed(3);
+	}
+	
+	document.getElementById('multiply').value = convertToKpl;
+}
+</script>
+
+<script language="JavaScript">
+function convertKpl()
+{
+	var KPL = document.converter.KPL.value;
+	var convertToMpg;
+	var toMpg = 2.35215;
+	
+	if(KPL == "")
+	{
+		alert("The input field was left blank. Please enter a value.")
+	}
+	else if(KPL <= 0)
+	{
+		alert("The value you entered is either less than or equal to zero. Please enter a value that is greater than zero.")
+	}
+	else
+	{
+		convertToMpg = (parseInt(KPL) * toMpg).toFixed(3);
+	}
+	
+	document.getElementById('multiply2').value = convertToMpg;
+}
+</script>
+</head>
+</html>
+
