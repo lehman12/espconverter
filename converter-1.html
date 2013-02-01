@@ -1,98 +1,179 @@
+<!--Created by Team Loopers-->
 <!DOCTYPE html>
 
 <html>
 
 <head>
 
+<!--This creates the tab title in browser.-->
 <title>
-	ConversionsRUs
+	ConversionsRUs  
 </title>
-<style type="text/css">
+
+<!--This sets the background image.-->
+<style type="text/css">  
 body
 {
-background-image:url('background4.gif');
-background-repeat:no-repeat;
-background-attachment:fixed;
-background-position:center;
+	background-image:url('GasNozzle1.jpg');  
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-position:center;
 }
 </style>
 
 <body>
 
-<center><b><FONT SIZE = +2>MPG and KPL Converter</FONT></b><center><BR>
+<!--This creates the floating text with its specific parameters.-->
+<center><marquee behavior="alternate"><b><FONT SIZE = +2 color="8B0000">MPG and KPL Converter</FONT></b></marquee><center><BR>
 
+<!--This creates the first conversion line (MPG -> KPL) including a user input field, an output field, a converter button, and a reset button.-->
 <form Name="converter">
-<input type="text" name="MPG" size="10" value="" onClick="this.value=''"> MPG =  
-<input type="text" ID="multiply" name="result" size="10" value=""> KPL
+
+<input type="text" style="text-align: center" name="MPG" size="10" value="" onClick="this.value=''"> MPG =  
+<input type="text" style="text-align: center" ID="multiply" name="result" size="10" value=""> KPL
 <input type="button" value="Convert" onclick="convertMpg();"> 
+<input type="reset" value="Reset">
+
+</form>
 <BR>
-<BR>
-<input type="text" name="KPL" size="10" value="" onClick="this.value=''"> KPL =
-<input type="text" ID="multiply2" name="result" size="10" value=""> MPG
+
+<!--This creates the second conversion line (KPL -> MPG) including a user input field, an output field, a converter button, and a reset button.-->
+<form Name="converter2">
+
+<input type="text" style="text-align: center" name="KPL" size="10" value="" onClick="this.value=''"> KPL =
+<input type="text" style="text-align: center" ID="multiply2" name="result" size="10" value=""> MPG
 <input type="button" value="Convert" onclick="convertKpl();">
-<BR>
 <input type="reset" value="Reset">
 <BR>
- 
+<BR>
+
+</form>
+
+<!--This creates a drop down menu that allows a user to check gas prices in their area.-->
+<form Name="converter3">
+
 Price Checker <select name="checker">
+
 <option value="">
 <option value="http://gasbuddy.com/">GasBuddy
 <option value="http://www.fuelmeup.com/">FuelMeUp
 <option value="http://gasprices.mapquest.com/">MapquestGasPrices
-</select>
 
+</select>
+<!--This block of code creates the button that allows a user to check gas prices based on their input.-->
 <input type="button" value="See Gas Prices in Your Area!" align="center" onClick="window.open(checker.value,'newtab')">
 
 </form>
+
+<BR><BR><BR>
+<BR><BR><BR>
+<BR><BR><BR>
+<BR><BR><BR>
+<BR><BR><BR>
+<BR><BR><BR>
+
+<!--This block of code creates a calculator that allows a person to calculate how much they will spend on gas today.-->
+<form Name="converter4">
+
+<b>How much are your paying for gas today?</b>
+<BR>
+<BR>
+<input type="text" style="text-align: center" name="Gallons" size="10" value="" onClick="this.value=''"> Gallons * $
+<input type="text" name="DollarsperGallon" size="10" value="" onClick="this.value=''"> /Gallon = $
+<input type="text" ID="multiply3" name="result" size="10" value="">
+<input type="button" value="Calculate" onclick="convertDollars();"> 
+<input type="reset" value="Reset">
+<BR>
+<BR>
+
+<!--This line of code creates an audio file player.-->
+<embed src="music3.m4a" autostart="false" height="50" width="400">
+
+
+</form>
+
 </body>
 
 <script language="JavaScript">
+/**
+ * This function converts MPG to KPL.
+ */
 function convertMpg()
 {
-	var MPG = document.converter.MPG.value;
-	var convertToKpl;
-	var toKpl = 0.425144;
+	var MPG = document.converter.MPG.value; //Gets the user input from the MPG field.
+	var convertToKpl; //Stores the finished conversion value.
+	var toKpl = 0.425144; //MPG to KPL constant.
 	
-	if(MPG == "")
+	if(MPG == "") //Checks to make sure the input field is not blank.
 	{
 		alert("The input field was left blank. Please enter a value.")
 	}
-	else if(MPG <= 0)
+	else if(MPG <= 0) //Checks to see if the input field is less than 0.
 	{
 		alert("The value you entered is either less than or equal to zero. Please enter a value that is greater than zero.")
 	}
-	else
+	else //If all checks out, the conversion takes place.
 	{
 		convertToKpl = (parseInt(MPG) * toKpl).toFixed(3);
 	}
 	
+	//Spits the resulting conversion back into the output field.
 	document.getElementById('multiply').value = convertToKpl;
 }
-</script>
 
-<script language="JavaScript">
+/**
+ * This function converts KPL to MPG.
+ */
 function convertKpl()
 {
-	var KPL = document.converter.KPL.value;
-	var convertToMpg;
-	var toMpg = 2.35215;
+	var KPL = document.converter2.KPL.value; //Gets the user input from the KPL field.
+	var convertToMpg; //Stores the finished conversion value.
+	var toMpg = 2.35215; //KPL to MPG constant.
 	
-	if(KPL == "")
+	if(KPL == "") //Checks to make sure the input field is not blank.
 	{
 		alert("The input field was left blank. Please enter a value.")
 	}
-	else if(KPL <= 0)
+	else if(KPL <= 0) //Checks to see if the input field is less than 0.
 	{
 		alert("The value you entered is either less than or equal to zero. Please enter a value that is greater than zero.")
 	}
-	else
+	else //If all checks out, the conversion takes place.
 	{
 		convertToMpg = (parseInt(KPL) * toMpg).toFixed(3);
 	}
 	
+	//Spits the resulting conversion back into the output field.
 	document.getElementById('multiply2').value = convertToMpg;
 }
+
+function convertDollars()
+{
+	var Gallons = document.converter4.Gallons.value; //Gets the user input from the Gallons field.
+	var DollarsperGallon = document.converter4.DollarsperGallon.value; //Gets the user input from the $/Gallon field.
+	var dollars; //Stores the final dollar value.
+	
+	if(Gallons == "" || DollarsperGallon == "") //Checks to make sure neither input field is not blank.
+	{
+		alert("The input field was left blank. Please enter a value.")
+	}
+	else if(Gallons <= 0 || DollarsperGallon <= 0) //Checks to see if either input field is less than 0.
+	{
+		alert("The value you entered is either less than or equal to zero. Please enter a value that is greater than zero.")
+	}
+	else //If all checks out, the conversion takes place.
+	{
+		dollars = (parseInt(Gallons) * parseInt(DollarsperGallon)).toFixed(2);
+	}
+	
+	//Spits the resulting conversion back into the output field.
+	document.getElementById('multiply3').value = dollars;
+}
 </script>
+
 </head>
+
+<!--A huge thank you to stackoverflow.com, w3schools.com, and htmlgoodies.com for the help they provided in the 
+  --inception and creation of this code and web app.-->
 </html>
 
